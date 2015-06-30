@@ -28,6 +28,11 @@ echo s:win_size
 let s:win_sizes = split(s:win_size, ' ')
 echo s:win_sizes
 
+" windowを殖やす場合columnsizeを増やして、
+" 大きさを均等にする
+" 閉じるときは現在のウィンドを閉じてサイズを小さくして
+" 均等にする
+
 function! TestWindow()
     " get number of window
     let l:win_num = winnr('$')
