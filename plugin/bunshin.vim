@@ -19,10 +19,22 @@ if !exists('g:BUNSHIN_ROW')
     let g:BUNSHIN_ROW = 80
 endif
 
+if !exists('g:BUNSHIN_MAX')
+    let g:BUNSHIN_ROW = 240
+endif
+
 let s:win_size = winrestcmd()
 echo s:win_size
 let s:win_sizes = split(s:win_size, ' ')
 echo s:win_sizes
+
+function! TestWindow()
+    " get number of window
+    let l:win_num = winnr('$')
+    for l:n in range(l:win_num)
+        echo l:n
+    endfor
+endfunction
 
 " Control window size.
 let g:window_num = 1
