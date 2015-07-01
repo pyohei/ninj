@@ -32,6 +32,9 @@ echo s:win_sizes
 " 大きさを均等にする
 " 閉じるときは現在のウィンドを閉じてサイズを小さくして
 " 均等にする
+" 現在のウィンドウのサイズの取得は
+" let a = &co
+" で可能後は計算すればなんとかなるような気がする
 
 function! TestWindow()
     " get number of window
