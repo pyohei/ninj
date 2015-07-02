@@ -23,10 +23,10 @@ if !exists('g:BUNSHIN_MAX')
     let g:BUNSHIN_MAX = 3
 endif
 
-let s:win_size = winrestcmd()
-echo s:win_size
-let s:win_sizes = split(s:win_size, ' ')
-echo s:win_sizes
+" let s:win_size = winrestcmd()
+" echo s:win_size
+" let s:win_sizes = split(s:win_size, ' ')
+" echo s:win_sizes
 
 " windowを殖やす場合columnsizeを増やして、
 " 大きさを均等にする
@@ -37,12 +37,15 @@ function! TestWindow()
     let win_size = &co
     let l:buf_size = g:BUNSHIN_COLUMN / 2
     let l:wide_max_size = l:win_size + l:buf_size
-    let l:win_num = l:wide_max_size / g:BUNSHIN_COLUMN
-    if l:win_num >= g:BUNSHIN_MAX
+    let l:cur_win_num = l:wide_max_size / g:BUNSHIN_COLUMN
+    if l:cur_win_num >= g:BUNSHIN_MAX
         echo 'Full of window'
         return
     endif
-    " ここから記述(windowサイズで変化する)
+    let l:win_size = (l:cur_win_num + 1) * g:BUNSHIN_COLUMN
+    set columns = l:win_size
+    vsplit
+    " gvimでないならエラーになるようにする
 endfunction
 
 " Control window size.
