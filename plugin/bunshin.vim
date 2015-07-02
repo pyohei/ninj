@@ -15,12 +15,12 @@ set cpo&vim
 " なければ、そのままのような感じにすれば効率よくシンプルにできるかも
 " 手始めとして
 
-if !exists('g:BUNSHIN_ROW')
-    let g:BUNSHIN_ROW = 80
+if !exists('g:BUNSHIN_COLUMN')
+    let g:BUNSHIN_COLUMN = 80
 endif
 
 if !exists('g:BUNSHIN_MAX')
-    let g:BUNSHIN_ROW = 240
+    let g:BUNSHIN_MAX = 3
 endif
 
 let s:win_size = winrestcmd()
@@ -32,16 +32,17 @@ echo s:win_sizes
 " 大きさを均等にする
 " 閉じるときは現在のウィンドを閉じてサイズを小さくして
 " 均等にする
-" 現在のウィンドウのサイズの取得は
-" let a = &co
-" で可能後は計算すればなんとかなるような気がする
 
 function! TestWindow()
-    " get number of window
-    let l:win_num = winnr('$')
-    for l:n in range(l:win_num)
-        echo l:n
-    endfor
+    let win_size = &co
+    let l:buf_size = g:BUNSHIN_COLUMN / 2
+    let l:wide_max_size = l:win_size + l:buf_size
+    let l:win_num = l:wide_max_size / g:BUNSHIN_COLUMN
+    if l:win_num >= g:BUNSHIN_MAX
+        echo 'Full of window'
+        return
+    endif
+    " ここから記述(windowサイズで変化する)
 endfunction
 
 " Control window size.
