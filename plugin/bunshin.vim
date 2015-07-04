@@ -28,12 +28,11 @@ endif
 " let s:win_sizes = split(s:win_size, ' ')
 " echo s:win_sizes
 
-" windowを殖やす場合columnsizeを増やして、
-" 大きさを均等にする
-" 閉じるときは現在のウィンドを閉じてサイズを小さくして
-" 均等にする
-
 function! TestWindow()
+    if !has('gui')
+        echo 'This commamd is for gui vim'
+        return
+    endif 
     let win_size = &co
     let l:buf_size = g:BUNSHIN_COLUMN / 2
     let l:wide_max_size = l:win_size + l:buf_size
@@ -43,21 +42,11 @@ function! TestWindow()
         return
     endif
     let l:win_size = (l:cur_win_num + 1) * g:BUNSHIN_COLUMN
-    set columns = l:win_size
-    vsplit
-    " gvimでないならエラーになるようにする
+    let &columns = l:win_size
+    vsplit<CR>
 endfunction
 
 " Control window size.
-let g:window_num = 1
-function! Wide_window()
-    let g:window_num += 1
-    let l:column_base = 80
-    let l:column_size = l:column_base * g:window_num
-    vs
-    let &l:columns = l:column_size
-endfunction
-nmap <C-T><C-V> :call Wide_window()<CR><C-w>=
 function! Tiny_window()
     let g:window_num -= 1
     let l:column_base = 80
@@ -67,8 +56,6 @@ function! Tiny_window()
     let &l:columns = l:column_size
 endfunction
 nmap <C-T><C-N> :call Tiny_window()<CR><C-w>=
-
-
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
