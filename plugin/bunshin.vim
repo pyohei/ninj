@@ -10,10 +10,8 @@ set cpo&vim
 
 " winrestcmd()
 " リサイズした部分にしか影響がでないので、現実的ではない
-" 単純に、今のバッファサイズを複製するような仕組みにしたら良いかも
-" でもって、閉じるときは、左右のバッファを確認して、あれば、閉じる
-" なければ、そのままのような感じにすれば効率よくシンプルにできるかも
-" 手始めとして
+" まず、Wide部分に関してはできた
+" Tiny部分に関しては現在のバッファを閉じて、サイズをマイナスする。
 
 if !exists('g:BUNSHIN_COLUMN')
     let g:BUNSHIN_COLUMN = 80
@@ -44,6 +42,21 @@ function! TestWindow()
     let l:win_size = (l:cur_win_num + 1) * g:BUNSHIN_COLUMN
     let &columns = l:win_size
     vsplit<CR>
+endfunction
+
+function! TestWindow2()
+    if !has('gui')
+        echo 'This commamd is for gui vim'
+        return
+    endif 
+    let l:win_size = &co
+    let l:buf_size = g:BUNSHIN_COLUMN / 2
+    let l:wide_min_size = g:BUNSHIN_COLUMN + l:buf_size
+    if l:wide_min_size >= l:win_size
+        echo 'Minimum window'
+        return
+    endif
+    " 残り記述
 endfunction
 
 " Control window size.
