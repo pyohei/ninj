@@ -9,6 +9,11 @@
 "       command定義を追加
 "       すでにwindowが広い場合、どうするか
 "           (windowのサイズとバッファのサイズを比較)
+"           方法
+"               let w = winnr()         window番号の取得
+"               let a = winwidth(w)     windowの幅を取得
+"               " aが飛び抜けていたらNG
+"               
 
 let s:save_cpo = &cpoptions
 set cpo&vim
