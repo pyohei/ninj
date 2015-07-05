@@ -4,14 +4,14 @@
 " Author: Phoohei
 " Licence: MTI Licence
 " ----------------------------------------------------------------------
+"  TODO
+"       autoloadへ移動
+"       command定義を追加
+"       すでにwindowが広い場合、どうするか
+"           (windowのサイズとバッファのサイズを比較)
 
 let s:save_cpo = &cpoptions
 set cpo&vim
-
-" winrestcmd()
-" リサイズした部分にしか影響がでないので、現実的ではない
-" まず、Wide部分に関してはできた
-" Tiny部分に関しては現在のバッファを閉じて、サイズをマイナスする。
 
 if !exists('g:BUNSHIN_COLUMN')
     let g:BUNSHIN_COLUMN = 80
@@ -20,11 +20,6 @@ endif
 if !exists('g:BUNSHIN_MAX')
     let g:BUNSHIN_MAX = 3
 endif
-
-" let s:win_size = winrestcmd()
-" echo s:win_size
-" let s:win_sizes = split(s:win_size, ' ')
-" echo s:win_sizes
 
 function! TestWindow()
     if !has('gui')
