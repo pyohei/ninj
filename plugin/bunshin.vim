@@ -49,26 +49,20 @@ function! TestWindow2()
         echo 'This commamd is for gui vim'
         return
     endif 
-    let l:win_size = &co
+    let l:cur_win_size = &co
     let l:buf_size = g:BUNSHIN_COLUMN / 2
     let l:wide_min_size = g:BUNSHIN_COLUMN + l:buf_size
-    if l:wide_min_size >= l:win_size
+    if l:wide_min_size >= l:cur_win_size
         echo 'Minimum window'
         return
     endif
-    " 残り記述
-endfunction
-
-" Control window size.
-function! Tiny_window()
-    let g:window_num -= 1
-    let l:column_base = 80
-    let l:column_size = l:column_base * g:window_num
     w
-    bd
-    let &l:columns = l:column_size
+    close
+    let l:win_size = l:cur_win_size - g:BUNSHIN_COLUMN
+    let &columns = l:win_size
+    " Unable <C-W> command with 'windcmd'
+    wincmd =
 endfunction
-nmap <C-T><C-N> :call Tiny_window()<CR><C-w>=
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
