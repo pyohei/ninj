@@ -24,7 +24,7 @@ function! window#wide()
     endif
     let l:win_size = (l:cur_win_num + 1) * g:BUNSHIN_COLUMN
     let &columns = l:win_size
-    vsplit<CR>
+    vsplit
 endfunction
 
 function! window#cut()
