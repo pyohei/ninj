@@ -64,5 +64,8 @@ function! TestWindow2()
     wincmd =
 endfunction
 
+command! -nargs=0 WindowWide call window#wide()
+command! -nargs=0 WindowCut call window#cut()
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
