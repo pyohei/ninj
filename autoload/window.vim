@@ -18,6 +18,18 @@ function! window#wide()
     let l:buf_size = g:BUNSHIN_COLUMN / 2
     let l:wide_max_size = l:win_size + l:buf_size
     let l:cur_win_num = l:wide_max_size / g:BUNSHIN_COLUMN
+
+    " --- check too large window ---
+    let l:cur_buf_num = winnr()
+    let l:cur_buf_width = winwidth(l:cur_buf_num)
+    let a = l:cur_buf_width + g:BUNSHIN_COLUMN
+    echo a
+
+    if l:cur_buf_width >= l:buf_size + g:BUNSHIN_COLUMN
+        echo 'There is problem current window size'
+        return
+    endif
+
     if l:cur_win_num >= g:BUNSHIN_MAX
         echo 'Full of window'
         return
@@ -34,6 +46,8 @@ function! window#cut()
     endif 
     let l:cur_win_size = &co
     let l:buf_size = g:BUNSHIN_COLUMN / 2
+
+
     let l:wide_min_size = g:BUNSHIN_COLUMN + l:buf_size
     if l:wide_min_size >= l:cur_win_size
         echo 'Minimum window'
