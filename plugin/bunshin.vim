@@ -16,8 +16,8 @@ if !exists('g:BUNSHIN_MAX')
     let g:BUNSHIN_MAX = 3
 endif
 
-command! -nargs=0 WindowWide call window#wide()
-command! -nargs=0 WindowCut call window#cut()
+command! -nargs=0 Bunshin call window#wide()
+command! -nargs=0 BunshinEnd call window#cut()
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
