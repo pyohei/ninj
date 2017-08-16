@@ -1,7 +1,8 @@
 # Simple Window control Vim Plugin
 
 ## About
-Control vim window simply
+Create new window which is same one on cursor.  
+I called this movement as bunshin which is 
 
 ## Usage
 You can set url information in your .vimrc.
