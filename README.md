@@ -2,8 +2,8 @@
 
 ## About
 
-Create clone window editing with vim.  
-The word bunshin is one of the technique using ninja. --> [Bunshin-no-Jutsu](http://www.ninjaencyclopedia.com/techniques/bunshin.html)
+Create clone window plugin.  
+The word `bunshin` is one of the technique using ninja. --> [Bunshin-no-Jutsu](http://www.ninjaencyclopedia.com/techniques/bunshin.html)
 
 
 
@@ -34,4 +34,3 @@ g:BUNSHIN_MAX     " Your window max size.(default: 3)
 ## Licence
 * MIT
   * see [LICENSE](https://github.com/pyohei/vim-hipchat/blob/master/LICENSE)
-
