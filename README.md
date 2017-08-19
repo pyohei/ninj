@@ -6,7 +6,7 @@ Create clone window plugin.
 The word `bunshin` is one of the technique using ninja. --> [Bunshin-no-Jutsu](http://www.ninjaencyclopedia.com/techniques/bunshin.html)  
 This tool enable only gvim.
 
-![Demo of bunnshin](https://raw.githubusercontent.com/pyohei/vim-bunshin/master/gif/vim-bunshin.gif)
+![Demo of bunnshin](https://raw.githubusercontent.com/pyohei/vim-bunshin/master/gif/screenshot.gif)
 
 ## Usage
 
